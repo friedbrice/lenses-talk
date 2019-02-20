@@ -58,7 +58,7 @@ var mods = (path) => (f) => (record) => sets( path )( f(gets(path)(record)) )( r
 // `mods` has type
 //   `Path[struct, field] => Function[field, field] => Function[struct, struct]`
 // `gets` has type
-//   `Path[struct, field] => struct => field`
+//   `Path[struct, field] => Function[struct, field]`
 // `sets` has type
 //   `Path[struct, field] => field => Function[struct, struct]`
 
