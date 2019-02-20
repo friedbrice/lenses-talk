@@ -2,9 +2,9 @@
 {-# LANGUAGE RankNTypes, DeriveFunctor, DeriveGeneric, UnicodeSyntax #-}
 module LensesIntroduction where
 
-import Data.Foldable (fold)
-import System.IO.Unsafe
-import System.Random
+import Data.Foldable (fold) -- base
+import System.IO.Unsafe -- base
+import System.Random -- random
 
 data Record a = Record {
     recordId :: Int,
