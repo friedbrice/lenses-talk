@@ -11,11 +11,11 @@
              TypeApplications #-}
 module UsingTheLensLibrary where
 
-import Control.Lens
+import Control.Lens -- lens
 import Data.Generics.Product -- generic-lens
 import Data.Generics.Sum -- generic-lens
-import GHC.Generics
-import GHC.TypeLits
+import GHC.Generics -- base
+import GHC.TypeLits -- base
 
 data Customer =
     Customer { name :: String, age :: Int }
