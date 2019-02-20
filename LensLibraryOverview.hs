@@ -1,6 +1,6 @@
 -- stack ghci --resolver lts-13.7 --package lens
 {-# LANGUAGE RankNTypes #-}
-module Control.LensraryOverview
+module LensLibraryOverview
     ( Traversal, Traversal', foldMapOf, over, set, toListOf
     , Lens, Lens', lens, view
     , Prism, Prism', prism, review
