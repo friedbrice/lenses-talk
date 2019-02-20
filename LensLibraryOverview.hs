@@ -8,7 +8,7 @@ module LensLibraryOverview
     , _Left, _Right, _Nothing, _Just
     ) where
 
-import qualified Control.Lens
+import qualified Control.Lens -- lens
 
 
 
