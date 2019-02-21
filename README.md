@@ -70,4 +70,4 @@ The "lens" library comes with a "History of Lenses" page. Here are a few notable
 
 6.  2012, Edward Kmett, "Mirrored Lenses" (http://comonad.com/reader/2012/mirrored-lenses/).
 
-    Kmett points out that Elliott's polymorphic lenses no longer satisfy the common-sense lens laws if the four type parameters are allowed to vary independently. Kmett coins the term "lens family" to describe these generalized lens-like constructs. He then goes on to describe more generalized lens-like constructs (`Getter`s, `Setter`s, and `Modifier`s), laying the ground work for the optics hierarchy we have today.
+    Kmett points out that O'Conner's polymorphic lenses no longer satisfy the common-sense lens laws if the four type parameters are allowed to vary independently. Kmett coins the term "lens family" to describe these generalized lens-like constructs. He then goes on to describe more generalized lens-like constructs (`Getter`s, `Setter`s, and `Modifier`s), laying the ground work for the optics hierarchy we have today.
