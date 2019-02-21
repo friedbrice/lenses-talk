@@ -1,5 +1,5 @@
 -- stack ghci --resolver lts-13.7 --package random
-{-# LANGUAGE RankNTypes, DeriveFunctor, DeriveGeneric, UnicodeSyntax #-}
+{-# LANGUAGE RankNTypes, DeriveFunctor, DeriveGeneric #-}
 module LensesIntroduction where
 
 import Data.Foldable (fold) -- base
