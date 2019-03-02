@@ -10,7 +10,7 @@ USING        = UsingTheLensLibrary.hs
 list: ## Show available targets.
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##\s*\(.*\)/\n\t\1\n/'
 
-.PHONEY: repl-intro
+.PHONY: repl-intro
 repl-intro: ## Load LensesIntroduction.hs in ghci.
 	@which stack > /dev/null
 	@stack repl $(RESOLVER) $(RANDOM) $(INTRODUCTION)
