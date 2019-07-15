@@ -69,7 +69,7 @@ function procrastinate_immutable(record) {
 
 
 // We want reusable solutions. We want a bunch of little functions, each
-// doing one general-purpose thing, and does it well. Such little
+// doing one general-purpose thing, and doing it well. Such little
 // functions could be chained together to write out bigger functions.
 // In other words, we want solutions that are **composable** and
 // **polymorphic.**
@@ -91,9 +91,9 @@ function mod(path, f, struct) {
 
 
 // Hypothetically:
-//   * `get` has type `(path, struct) => field`
-//   * `set` has type `(path, struct, field) => struct`
-//   * `mod` has type `(path, function, struct) => struct`
+//   * `get` has signature `(path, struct) => field`
+//   * `set` has signature `(path, struct, field) => struct`
+//   * `mod` has signature `(path, function, struct) => struct`
 
 
 // Moreover, we'd love to be able to compose paths so that we
@@ -110,8 +110,8 @@ function copy(struct) {
 }
 
 
-// Now, how should we define a Path? The most straight-forward thing
-// way is to define a Path to be just an object that defines `get` and
+// Now, how should we define a Path? The most straight-forward
+// way is to define a Path to be just an object that has `get` and
 // `set` methods that target a particular field in a struct. We can
 // define `mod` and the cheekily-named `dot` in terms of `get` and `set`.
 function Path(get, set) {
@@ -126,9 +126,15 @@ function Path(get, set) {
         dot: (inner) => {
             return Path(
                 // get(struct)
-                struct => inner.get(get(struct)),
+                (struct) => inner.get(get(struct)),
                 // set(struct, x)
-                (struct, x) => set(struct, inner.set(get(struct), x))
+                (struct, x) => {
+                    var old_outer = struct;
+                    var old_inner = get(old_outer);
+                    var new_inner = inner.set(old_inner, x);
+                    var new_outer = set(struct, new_inner);
+                    return new_outer;
+                }
             );
         }
     };
@@ -146,7 +152,7 @@ function Path(get, set) {
 // immutable fashion.
 
 
-// Using this API, we can define some Paths four our TODO app (or
+// Using this API, we can define some Paths for our TODO app (or
 // whatever it is).
 
 
@@ -167,8 +173,8 @@ var creation = Path(
 );
 
 
-// The `moment` Path points from the `creation` object into its `moment`
-// property.
+// The `moment` Path is intended to point from the `creation` object
+// into its `moment` property. But, again, it's polymorphic.
 var moment = Path(
     // define get
     (struct) => struct.moment,
@@ -191,9 +197,9 @@ var moment = Path(
 // provide the name of a property of an object.
 function Field(field_name) {
     return Path(
-        // get
+        // define get
         (struct) => struct[field_name],
-        // set
+        // define set
         (struct, x) => {
             var new_struct = copy(struct);
             new_struct[field_name] = x;
@@ -204,23 +210,23 @@ function Field(field_name) {
 
 
 // Here are a bunch of little functions, each doing one (general-purpose)
-// thing well. We don't need the old, clunky `creation` or `moment`
+// thing well. (We don't need the old, clunky `creation` or `moment`
 // anymore: we can redefine them in terms of `Field`. Fortunately, we
-// made them mutable, so we can just overwrite them ;-)
+// made them mutable, so we can just overwrite them ;-) )
 creation = Field('creation');
 moment = Field('moment');
 var date = Field('date');
 var day = Field('day');
 
 
-// Compare to `procrastinate`. Notice we only have to write out the
-// path once ;-)
+// Compare to `procrastinate`. Notice that here we only have to write
+// out the path once XD
 function procrastinate_lensy(record) {
     return creation.dot(moment).dot(date).dot(day).mod(record, (x) => x + 1);
 }
 
 
-// Load this file in node or your javascript REPL of choice, and try:
+// Load this file in your javascript REPL of choice, and try:
 //
 //     > danielsLensTalk.creation
 //     > procrastinate_lensy(danielsLensTalk).creation
