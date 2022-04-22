@@ -16,7 +16,7 @@ Part 4: [UsingTheLensLibrary.hs](https://github.com/friedbrice/lenses-talk/blob/
 
 2.  Brian McKenna, "Productionisation of Functional Optics" (https://www.youtube.com/watch?v=H01dw-BMmlE).
 
-3.  Gabrial Gonzalez, "lens-tutorial" (http://hackage.haskell.org/package/lens-tutorial).
+3.  Gabrialla Gonzalez, "lens-tutorial" (http://hackage.haskell.org/package/lens-tutorial).
 
 
 ## Notable Haskell Lens Libraries ##
