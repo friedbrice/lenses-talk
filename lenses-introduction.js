@@ -19,7 +19,8 @@ var danielsLensTalk = {
     payload: 'Daniel\'s Lens Talk'
 };
 
-// ...buuuut, I was running a little behind. That's easy-enough to fix.
+// ...buuuut, I was running a little behind.
+// That's easy-enough to fix.
 function fixDanielsLensTalk() {
     danielsLensTalk.creation.moment.date.day = 20;
 }
