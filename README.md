@@ -1,4 +1,4 @@
-# (Functional) References #
+# Table of Contents #
 
 Part 1: [lenses-introduction.js](https://github.com/friedbrice/lenses-talk/blob/master/lenses-introduction.js)
 
@@ -7,6 +7,8 @@ Part 2: [LensesIntroduction.hs](https://github.com/friedbrice/lenses-talk/blob/m
 Part 3: [LensLibraryOverview.hs](https://github.com/friedbrice/lenses-talk/blob/master/LensLibraryOverview.hs)
 
 Part 4: [UsingTheLensLibrary.hs](https://github.com/friedbrice/lenses-talk/blob/master/UsingTheLensLibrary.hs)
+
+# (Functional) References #
 
 ## Further Learning ##
 
