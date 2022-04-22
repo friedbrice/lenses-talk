@@ -121,7 +121,7 @@ _Just = Control.Lens._Just
 
 -- | Every lens is a traversal.
 traversalFromLens :: Lens s s' a a' -> Traversal s s' a a'
-traversalFromLens = id
+traversalFromLens = id -- The type signature, together with the fact that the implementation is `id`, is a proof of the assertion in the doc comment.
 
 -- | Every prism is a traversal.
 traversalFromPrism :: Prism s s' a a' -> Traversal s s' a a'
@@ -129,17 +129,14 @@ traversalFromPrism = id
 
 -- | lens × lens is a lens.
 composeLensLens :: Lens z z' y y' -> Lens y y' x x' -> Lens z z' x x'
-composeLensLens = (.)
+composeLensLens = (.) -- The type signature, together with the fact that the implementation is `(.)`, is a proof of the assertion in the doc comment.
 
 -- | prism × prism is a prism.
 composePrismPrism :: Prism z z' y y' -> Prism y y' x x' -> Prism z z' x x'
 composePrismPrism = (.)
 
 -- | traversal × traversal is a traversal.
-composeTraversalTraversal ::
-    Traversal z z' y y' ->
-    Traversal y y' x x' ->
-    Traversal z z' x x'
+composeTraversalTraversal :: Traversal z z' y y' -> Traversal y y' x x' -> Traversal z z' x x'
 composeTraversalTraversal = (.)
 
 -- | prism × lens is a traversal.
