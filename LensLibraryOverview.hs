@@ -56,7 +56,7 @@ type Lens' s a = Lens s s a a
 lens ::
     (s -> a) ->        -- ^ A function for getting
     (s -> a' -> s') -> -- ^ And a function for setting
-    Lens s s' a a'     -- ^ Together give rise to a lens.
+    Lens s s' a a'     -- ^ Together define a lens.
 lens get set =
     Control.Lens.lens get set
 
@@ -89,7 +89,7 @@ type Prism' s a = Prism s s a a
 prism ::
     (variant' -> union') ->             -- ^ A function for upcasting
     (union -> Either union' variant) -> -- ^ And a function for matching
-    Prism union union' variant variant' -- ^ Together give rise to a prism.
+    Prism union union' variant variant' -- ^ Together define a prism.
 prism upcast match =
     Control.Lens.prism upcast match
 
